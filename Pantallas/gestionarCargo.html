@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Cargo</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .buttons .modify {
+            background-color: #ff8c00;
+            color: #fff;
+        }
+        .buttons .search {
+            background-color: #1e90ff;
+            color: #fff;
+        }
+        .buttons .delete {
+            background-color: #ff4500;
+            color: #fff;
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-grey:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Gestionar Cargo</h2>
+    <form>
+        <label for="cargoID">ID del Cargo:</label>
+        <input type="text" id="cargoID" name="cargoID" required>
+
+        <label for="nombreCargo">Nombre del Cargo:</label>
+        <input type="text" id="nombreCargo" name="nombreCargo" required>
+
+        <div class="buttons">
+            <button type="submit" class="modify">Modificar</button>
+            <button type="button" class="search">Buscar</button>
+            <button type="button" class="delete">Eliminar</button>
+        </div>
+    </form>
+    <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
+</div>
+</body>
+</html>

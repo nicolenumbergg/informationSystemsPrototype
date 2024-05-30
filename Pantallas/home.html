@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Llamadas con IA</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: #e4e4e7;
+        }
+        .navbar {
+            width: 100%;
+            background-color: #111;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a, .navbar select {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .navbar a:hover, .navbar select:hover {
+            background-color: #575757;
+            color: white;
+        }
+        .navbar select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            margin-top: 60px; /* Adjust this if your navbar height changes */
+        }
+        .content h2, .content h3 {
+            color: #03a9f4;
+        }
+        .welcome {
+            text-align: center;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #03a9f4;
+            margin-bottom: 20px;
+            background-image: url('images/callCenterBackground.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script>
+        function navigateToPage(select) {
+            var selectedPage = select.value;
+            if (selectedPage) {
+                window.location.href = selectedPage;
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+    <a href="login.html">Login</a>
+    <select onchange="navigateToPage(this)">
+        <option value="">Seleccione una opción</option>
+        <option value="gestionClientes.html">Gestión de Clientes</option>
+        <option value="gestionarEmpresaa.html">Gestión de Empresas</option>
+        <option value="cargarGrabaciones.html">Cargar Grabaciones</option>
+        <option value="protocoloContestacion.html">Protocolos de Contestación</option>
+        <option value="registrarLlamada.html">Registrar Llamada</option>
+        <option value="transcripcion.html">Cargar Transcripción</option>
+        <option value="usuariosYpermisos.html">Gestión de Usuarios y Permisos</option>
+        <option value="evaluacionLlamadas.html">Evaluación de Llamadas</option>
+        <option value="ponderacion.html">Ponderación de Llamada</option>
+        <option value="areaMejora.html">Gestión de Área de Mejora</option>
+        <option value="gestionarCuestionario.html">Gestión de Cuestionario</option>
+        <option value="gestionarCargo.html">Gestionar cargos</option>
+        <option value="informeSemanal.html">Informe Semanal</option>
+    </select>
+</div>
+
+<!-- Welcome Message -->
+<div class="welcome">
+    <h1>Bienvenido al Sistema de Callcenter Interacción Cliente-IA</h1>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Etiqueta de Llamada</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e4e4e7;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(3, 169, 244, 0.5);
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #03a9f4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #b0b0b0;
+        }
+        .form-control {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #3a3a3a;
+        }
+        .btn-primary {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+        }
+        .btn-primary:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-grey:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Actualizar Etiqueta de Llamada</h1>
+    <form id="etiqueta-llamada-form">
+
+        <div class="form-group">
+            <label for="etiqueta-actual">Etiqueta llamada:</label>
+            <input type="text" id="etiqueta-actual" name="etiqueta-actual" class="form-control" required>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="actualizarEtiquetaLlamada()">Actualizar Etiqueta de Llamada</button>
+        </div>
+    </form>
+    <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    function actualizarEtiquetaLlamada() {
+        const etiquetaActual = document.getElementById('etiqueta-actual').value;
+        const etiquetaNueva = document.getElementById('etiqueta-nueva').value;
+
+        // Aquí debes agregar la lógica para verificar si la etiqueta actual existe en el sistema
+        const etiquetaExistente = false; // Simulación de verificación
+
+        if (etiquetaExistente) {
+            // Aquí debes agregar la lógica para actualizar la etiqueta de llamada en el sistema
+            alert(`Etiqueta de llamada "${etiquetaActual}" actualizada correctamente a "${etiquetaNueva}".`);
+            // Limpiar el formulario
+            document.getElementById('etiqueta-llamada-form').reset();
+        } else {
+            alert(`La etiqueta de llamada "${etiquetaActual}" no existe en el sistema. Por favor, introduzca una etiqueta existente.`);
+        }
+    }
+</script>
+</body>
+</html>

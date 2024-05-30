@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e4e4e7;
+            font-family: Arial, sans-serif;
+        }
+        .navbar, .footer {
+            background-color: #1c1c1c;
+            box-shadow: 0 4px 8px rgba(3, 169, 244, 0.2);
+        }
+        .container {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(3, 169, 244, 0.5);
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #03a9f4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #b0b0b0;
+        }
+        .form-control {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #3a3a3a;
+        }
+        .btn-primary {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+        }
+        .btn-primary:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        .btn-secondary {
+            background-color: #757575;
+            border-color: #757575;
+        }
+        .btn-secondary:hover {
+            background-color: #9e9e9e;
+            border-color: #9e9e9e;
+        }
+        .input-group-text {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-light-blue {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+            color: #ffffff;
+        }
+        .btn-light-blue:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-grey:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Gestionar Clientes</a>
+</nav>
+
+<div class="container">
+    <h1>Gestión de clientes</h1>
+    <form>
+        <div class="form-group">
+            <label for="id-cliente">ID Cliente:</label>
+            <input type="text" id="id-cliente" name="id-cliente" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="id-empresa">ID Empresa Asociada:</label>
+            <input type="text" id="id-empresa" name="id-empresa" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="nombre-completo">Nombre Completo:</label>
+            <input type="text" id="nombre-completo" name="nombre-completo" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="ci">C.I:</label>
+            <input type="text" id="ci" name="ci" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="ciudad">Ciudad:</label>
+            <input type="text" id="ciudad" name="ciudad" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" class="form-control" required>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-light-blue" onclick="guardarCliente()">Guardar Cliente</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='modificarCliente.html'">Modificar Cliente</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='eliminarCliente.html'">Eliminar Cliente</button>
+        </div>
+    </form>
+    <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
+</div>
+
+<footer class="footer py-3">
+    <div class="container text-center">
+        <span class="text-muted">© 2024 Gestionar Clientes</span>
+    </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>
+
+

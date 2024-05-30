@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Ponderación</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e4e4e7;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(3, 169, 244, 0.5);
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #03a9f4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #b0b0b0;
+        }
+        .form-control {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #3a3a3a;
+        }
+        .btn-primary {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+        }
+        .btn-primary:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ffffff;
+        }
+        th {
+            background-color: #03a9f4;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: left;
+        }
+        td {
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+        .btn-success:hover {
+            background-color: #43a047;
+            border-color: #43a047;
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-grey:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Gestionar Ponderación</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Criterio de Evaluación</th>
+            <th>Ponderación Actual</th>
+            <th>Ajustar Ponderación</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Amabilidad</td>
+            <td>5</td>
+            <td><input type="number" class="form-control" min="1" max="10" value="5"></td>
+        </tr>
+        <tr>
+            <td>Claridad de Información</td>
+            <td>7</td>
+            <td><input type="number" class="form-control" min="1" max="10" value="7"></td>
+        </tr>
+        <tr>
+            <td>Identificación de Insultos</td>
+            <td>3</td>
+            <td><input type="number" class="form-control" min="1" max="10" value="3"></td>
+        </tr>
+        <!-- Agrega más filas según sea necesario -->
+        </tbody>
+    </table>
+    <div class="text-center mt-3">
+        <button type="button" class="btn btn-success">Guardar Ponderación</button>
+    </div>
+    <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
+</div>
+
+<!-- Bootstrap JS y dependencias -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

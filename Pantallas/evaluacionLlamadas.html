@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Llamadas Cliente-IA</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e4e4e7;
+            font-family: Arial, sans-serif;
+        }
+        .navbar, .footer {
+            background-color: #1c1c1c;
+            box-shadow: 0 4px 8px rgba(3, 169, 244, 0.2);
+        }
+        .container {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(3, 169, 244, 0.5);
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #03a9f4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #b0b0b0;
+        }
+        .form-control {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #3a3a3a;
+        }
+        .btn-primary {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+        }
+        .btn-primary:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        .btn-secondary {
+            background-color: #757575;
+            border-color: #757575;
+        }
+        .btn-secondary:hover {
+            background-color: #9e9e9e;
+            border-color: #9e9e9e;
+        }
+        .input-group-text {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .btn-light-blue {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+            color: #ffffff;
+        }
+        .btn-light-blue:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-grey:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Evaluación de Llamadas</a>
+</nav>
+
+<div class="container">
+    <h1>Evaluación de Llamadas Cliente-IA</h1>
+    <form>
+        <div class="form-group">
+            <label for="numero-llamada">Número de llamada:</label>
+            <input type="text" id="numero-llamada" name="numero-llamada" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="id-cliente">ID Cliente:</label>
+            <div class="input-group">
+                <input type="text" id="id-cliente" name="id-cliente" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-secondary" onclick="modificarCliente()"><i class="fas fa-search"></i> Buscar Cliente</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="id-evaluacion">ID Evaluación:</label>
+            <input type="text" id="id-evaluacion" name="id-evaluacion" class="form-control" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="insultos">¿Se identificaron insultos?</label>
+            <input type="text" id="insultos" name="insultos" class="form-control" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="amabilidad">Nivel de amabilidad del operador:</label>
+            <input type="text" id="amabilidad" name="amabilidad" class="form-control" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="sugerencias">Aplicación de sugerencias y protocolos:</label>
+            <input type="text" id="sugerencias" name="sugerencias" class="form-control" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="satisfaccion">Satisfacción del cliente:</label>
+            <input type="text" id="satisfaccion" name="satisfaccion" class="form-control" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="motivo">Motivo de la llamada:</label>
+            <input type="text" id="motivo" name="motivo" class="form-control" required readonly>
+        </div>
+        <div class="form-group">
+            <label for="etiqueta">Etiqueta:</label>
+            <input type="text" id="etiqueta" name="etiqueta" class="form-control" required readonly>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-light-blue" onclick="evaluarLlamada()">Realizar Evaluación</button>
+        </div>
+    </form>
+    <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
+
+</div>
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    function evaluarLlamada() {
+        const numeroLlamada = document.getElementById('numero-llamada').value;
+        const idCliente = document.getElementById('id-cliente').value;
+
+        // Verificar que el Nro. de llamada exista
+        if (!verificarNumeroLlamada(numeroLlamada)) {
+            alert("El número de llamada no existe. Por favor, introduzca un número de llamada existente.");
+            return;
+        }
+
+        // Asignar ID de evaluación y llenar los campos
+        const idEvaluacion = generarIdEvaluacion();
+        if (!verificarIdEvaluacion(idEvaluacion)) {
+            alert("El ID de evaluación ya existe. Por favor, intente nuevamente.");
+            return;
+        }
+
+        document.getElementById('id-evaluacion').value = idEvaluacion;
+        document.getElementById('insultos').value = evaluarInsultos(numeroLlamada);
+        document.getElementById('amabilidad').value = evaluarAmabilidad(numeroLlamada);
+        document.getElementById('sugerencias').value = evaluarSugerencias(numeroLlamada);
+        document.getElementById('satisfaccion').value = evaluarSatisfaccion(numeroLlamada);
+        document.getElementById('motivo').value = obtenerMotivo(numeroLlamada);
+        document.getElementById('etiqueta').value = asignarEtiqueta(numeroLlamada);
+
+        // Guardar evaluación
+        guardarEvaluacion({
+            idEvaluacion,
+            numeroLlamada,
+            idCliente,
+            insultos: document.getElementById('insultos').value,
+            amabilidad: document.getElementById('amabilidad').value,
+            sugerencias: document.getElementById('sugerencias').value,
+            satisfaccion: document.getElementById('satisfaccion').value,
+            motivo: document.getElementById('motivo').value,
+            etiqueta: document.getElementById('etiqueta').value
+        });
+
+        alert("Evaluación realizada con éxito.");
+    }
+
+    function verificarNumeroLlamada(numeroLlamada) {
+        // Lógica para verificar que el número de llamada exista en el sistema
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return true;
+    }
+
+    function generarIdEvaluacion() {
+        // Lógica para generar un ID de evaluación único
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'EV-' + Math.floor(Math.random() * 100000);
+    }
+
+    function verificarIdEvaluacion(idEvaluacion) {
+        // Lógica para verificar que el ID de evaluación no exista
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return true;
+    }
+
+    function evaluarInsultos(numeroLlamada) {
+        // Lógica para evaluar si se identificaron insultos en la llamada
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'No';
+    }
+
+    function evaluarAmabilidad(numeroLlamada) {
+        // Lógica para evaluar el nivel de amabilidad del operador
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'Alta';
+    }
+
+    function evaluarSugerencias(numeroLlamada) {
+        // Lógica para evaluar la aplicación de sugerencias y protocolos
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'Correcta';
+    }
+
+    function evaluarSatisfaccion(numeroLlamada) {
+        // Lógica para evaluar la satisfacción del cliente
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'Muy Satisfecho';
+    }
+
+    function obtenerMotivo(numeroLlamada) {
+        // Lógica para obtener el motivo de la llamada
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'Consulta';
+    }
+
+    function asignarEtiqueta(numeroLlamada) {
+        // Lógica para asignar una etiqueta a la llamada
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        return 'Etiqueta 1';
+    }
+
+    function guardarEvaluacion(evaluacion) {
+        // Lógica para guardar la evaluación en el sistema
+        // Esta es una función de ejemplo, debes reemplazarla con la lógica real
+        console.log('Evaluación guardada:', evaluacion);
+    }
+</script>
+</body>
+</html>

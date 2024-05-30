@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contestar llamadas con IA</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .phone-container {
+            background-color: #000;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            width: 400px;
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .screen {
+            background-color: #fff;
+            height: calc(100% - 100px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-grow: 1;
+            align-items: flex-end;
+        }
+        .button {
+            width: 60px;
+            height: 60px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        .button.red {
+            background-color: #ff3b30;
+        }
+        .button.green {
+            background-color: #4cd964;
+        }
+    </style>
+</head>
+<body>
+<div class="phone-container">
+    <div class="screen">
+        <p class="text-muted text-center">Llamada entrante...</p>
+        <p class="text-center"><strong>Cliente:</strong> John Doe</p>
+        <p class="text-center"><strong>ID:</strong> 123456789</p>
+    </div>
+    <div class="buttons">
+        <div class="button red" onclick="endCall()">
+            <i class="fas fa-phone-slash"></i>
+        </div>
+        <div class="button green" onclick="answerCall()">
+            <i class="fas fa-phone"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    function endCall() {
+        alert("Llamada terminada");
+    }
+
+    function answerCall() {
+        const cliente = "John Doe";
+        const id = "123456789";
+        alert(`Llamada atendida con IA:\nCliente: ${cliente}\nID: ${id}`);
+    }
+</script>
+</body>
+</html>
