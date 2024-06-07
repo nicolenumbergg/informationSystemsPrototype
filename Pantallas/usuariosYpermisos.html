@@ -125,6 +125,21 @@
             </div>
         </div>
     </form>
+    <hr>
+    <h2 class="text-center">Crear Nuevo Usuario</h2>
+    <form id="crear-usuario-form">
+        <div class="form-group">
+            <label for="nuevo-usuario">Nombre de Usuario:</label>
+            <input type="text" id="nuevo-usuario" name="nuevo-usuario" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="nuevo-password">Contraseña:</label>
+            <input type="password" id="nuevo-password" name="nuevo-password" class="form-control" required>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="crearUsuario()">Crear Usuario</button>
+        </div>
+    </form>
     <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
 </div>
 
@@ -180,6 +195,17 @@
         // Limpiar los campos del formulario
         document.getElementById('permiso-form').reset();
         document.getElementById('permisos-container').style.display = 'none';
+    }
+
+    function crearUsuario() {
+        const nuevoUsuario = document.getElementById('nuevo-usuario').value;
+        const nuevoPassword = document.getElementById('nuevo-password').value;
+
+        // Aquí debes agregar la lógica para crear el nuevo usuario en el sistema
+        alert(`Usuario ${nuevoUsuario} creado con éxito.`);
+
+        // Limpiar los campos del formulario
+        document.getElementById('crear-usuario-form').reset();
     }
 </script>
 </body>

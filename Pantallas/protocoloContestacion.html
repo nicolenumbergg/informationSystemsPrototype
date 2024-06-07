@@ -56,19 +56,18 @@
         }
         #lista-pasos-protocolo .list-group-item {
             color: #000000; /* Cambiar color de los pasos a negro */
-        }.btn-grey {
-             background-color: #888888;
-             color: white;
-             border: none;
-             padding: 10px 20px;
-             border-radius: 5px;
-             cursor: pointer;
-         }
-
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
         .btn-grey:hover {
             background-color: #666666;
         }
-
     </style>
 </head>
 <body>
@@ -76,11 +75,19 @@
     <h1>Gestionar Protocolos de Contestación de Llamadas</h1>
     <form id="gestionar-protocolos-form">
         <div class="form-group">
-            <label for="protocolo-id">ID del Protocolo:</label>
-            <input type="text" id="protocolo-id" name="protocolo-id" class="form-control" required>
+            <label for="etiqueta-eliminar">ID de protocolo:</label>
+            <div class="input-group">
+                <input type="text" id="etiqueta-eliminar" name="etiqueta-eliminar" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmarEliminarModal"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
         </div>
-        <div class="text-center">
+        <div class="text-center mb-2">
             <button type="button" class="btn btn-primary" onclick="mostrarPasosProtocolo()">Mostrar Pasos del Protocolo</button>
+        </div>
+        <div class="text-center mb-2">
+            <button type="button" class="btn btn-secondary" onclick="agregarProtocolo()">Agregar protocolo</button>
         </div>
         <div id="lista-pasos" style="display: none;">
             <hr>
@@ -92,12 +99,13 @@
                 <button type="button" class="btn btn-primary" onclick="agregarPasoProtocolo()">Agregar Paso</button>
             </div>
         </div>
+        <div class="text-center mt-3">
+            <button type="button" class="btn btn-danger" onclick="mostrarModalEliminarProtocolo()">Eliminar Protocolo</button>
+        </div>
     </form>
     <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
-
 </div>
 
-<!-- Modal de confirmación para eliminar paso -->
 <!-- Modal de confirmación para eliminar paso -->
 <div class="modal fade" id="confirmarEliminarPasoModal" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarPasoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -109,7 +117,7 @@
                 </button>
             </div>
             <div class="modal-body" style="color: black;"> <!-- Cambio del color del texto a negro -->
-                ¿Seguro que deseas eliminar el protocolo?
+                ¿Seguro que deseas eliminar este paso?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -119,6 +127,26 @@
     </div>
 </div>
 
+<!-- Modal de confirmación para eliminar protocolo -->
+<div class="modal fade" id="confirmarEliminarProtocoloModal" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarProtocoloModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmarEliminarProtocoloModalLabel">Confirmar Eliminación de Protocolo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color: black;"> <!-- Cambio del color del texto a negro -->
+                ¿Seguro que deseas eliminar el protocolo?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="eliminarProtocolo()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -128,7 +156,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script>
     function mostrarPasosProtocolo() {
-        const protocoloId = document.getElementById('protocolo-id').value;
+        const protocoloId = document.getElementById('etiqueta-eliminar').value;
 
         // Aquí deberías obtener los pasos del protocolo del sistema
         const pasosProtocolo = ["Saludo Inicial", "Identificación del Operador", "Escucha Activa", "Confirmación de Información", "Ofrecimiento de Ayuda", "Aplicación de Solución", "Despedida y Agradecimiento"];
@@ -157,6 +185,20 @@
 
     function agregarPasoProtocolo() {
         // Aquí deberías implementar la lógica para agregar un nuevo paso al protocolo
+    }
+
+    function agregarProtocolo() {
+        // Aquí deberías implementar la lógica para agregar un nuevo protocolo
+    }
+
+    function mostrarModalEliminarProtocolo() {
+        $('#confirmarEliminarProtocoloModal').modal('show');
+    }
+
+    function eliminarProtocolo() {
+        const protocoloId = document.getElementById('etiqueta-elminar').value;
+
+        // Aquí deberías implementar la lógica para eliminar el protocolo
     }
 </script>
 </body>

@@ -94,11 +94,14 @@
 <div class="container">
     <h1>Modificar Empresa</h1>
     <form>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
+        <div class="form-group">
+            <label for="etiqueta-eliminar">ID de empresa:</label>
+            <div class="input-group">
+                <input type="text" id="etiqueta-eliminar" name="etiqueta-eliminar" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmarEliminarModal"><i class="fas fa-search"></i> Buscar</button>
+                </div>
             </div>
-            <input type="text" id="id-empresa" name="id-empresa" class="form-control" placeholder="ID de la Empresa" required>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre de la Empresa:</label>

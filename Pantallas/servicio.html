@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Servicios</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e4e4e7;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(3, 169, 244, 0.5);
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+        h1 {
+            color: #03a9f4;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #b0b0b0;
+        }
+        .form-control {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #3a3a3a;
+        }
+        .btn-primary {
+            background-color: #03a9f4;
+            border-color: #03a9f4;
+        }
+        .btn-primary:hover {
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+        .btn-danger {
+            background-color: #f44336;
+            border-color: #f44336;
+        }
+        .btn-danger:hover {
+            background-color: #ff5252;
+            border-color: #ff5252;
+        }
+        .btn-secondary {
+            background-color: #757575;
+            border-color: #757575;
+        }
+        .btn-secondary:hover {
+            background-color: #9e9e9e;
+            border-color: #9e9e9e;
+        }
+        .btn-grey {
+            background-color: #888888;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-grey:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Gestión de Servicios</h1>
+    <form id="gestionar-servicios-form">
+        <div class="form-group">
+            <label for="nombre-servicio">Nombre de servicio:</label>
+            <div class="input-group">
+                <input type="text" id="nombre-servicio" name="nombre-servicio" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" onclick="buscarServicio()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="empresa-asociada">Empresa asociada:</label>
+            <div class="input-group">
+                <input type="text" id="empresa-asociada" name="empresa-asociada" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" onclick="buscarEmpresa()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="descripcion-servicio">Descripción:</label>
+            <textarea id="descripcion-servicio" name="descripcion-servicio" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="text-center mb-2">
+            <button type="button" class="btn btn-primary" onclick="agregarServicio()">Agregar Servicio</button>
+
+
+        </div>
+    </form>
+    <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    function buscarServicio() {
+        const nombreServicio = document.getElementById('nombre-servicio').value;
+
+        // Aquí deberías agregar la lógica para buscar el servicio en el sistema
+        alert('Buscar servicio: ' + nombreServicio);
+    }
+
+    function buscarEmpresa() {
+        const empresaAsociada = document.getElementById('empresa-asociada').value;
+
+        // Aquí deberías agregar la lógica para buscar la empresa en el sistema
+        alert('Buscar empresa: ' + empresaAsociada);
+    }
+
+    function agregarServicio() {
+        const nombreServicio = document.getElementById('nombre-servicio').value;
+        const empresaAsociada = document.getElementById('empresa-asociada').value;
+        const descripcionServicio = document.getElementById('descripcion-servicio').value;
+
+        // Aquí deberías agregar la lógica para agregar el servicio en el sistema
+        alert('Agregar servicio:\nNombre: ' + nombreServicio + '\nEmpresa: ' + empresaAsociada + '\nDescripción: ' + descripcionServicio);
+    }
+
+    function modificarServicio() {
+        const nombreServicio = document.getElementById('nombre-servicio').value;
+        const empresaAsociada = document.getElementById('empresa-asociada').value;
+        const descripcionServicio = document.getElementById('descripcion-servicio').value;
+
+        // Aquí deberías agregar la lógica para modificar el servicio en el sistema
+        alert('Modificar servicio:\nNombre: ' + nombreServicio + '\nEmpresa: ' + empresaAsociada + '\nDescripción: ' + descripcionServicio);
+    }
+
+    function eliminarServicio() {
+        const nombreServicio = document.getElementById('nombre-servicio').value;
+
+        // Aquí deberías agregar la lógica para eliminar el servicio en el sistema
+        alert('Eliminar servicio: ' + nombreServicio);
+    }
+</script>
+</body>
+</html>

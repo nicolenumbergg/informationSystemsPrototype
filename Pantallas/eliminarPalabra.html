@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Área de Mejora</title>
+    <title>Gestión de Palabras Ofensivas</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
@@ -62,31 +62,33 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         .btn-grey:hover {
             background-color: #666666;
+        }
+        .input-group-append .btn {
+            margin-left: -1px; /* Para evitar el borde doble entre el input y el botón */
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Eliminar Área de Mejora</h1>
-    <form id="eliminar-area-form">
+    <h1>Gestión de Palabras Ofensivas</h1>
+    <form id="gestionar-palabras-form">
         <div class="form-group">
-            <label for="nombre">ID area de mejora:</label>
+            <label for="buscar-palabra">Buscar Palabra:</label>
             <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" id="buscar-palabra" name="buscar-palabra" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" onclick="buscarPalabra()"><i class="fas fa-search"></i> Buscar</button>
                 </div>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
             </div>
         </div>
-        <div class="form-group">
-            <label for="autorizacion">Firma de Autorización:</label>
-            <input type="text" id="autorizacion" name="autorizacion" class="form-control" required>
+        <div id="resultado-busqueda" style="display: none;">
+            <h4>Resultado de la Búsqueda:</h4>
+            <ul id="lista-palabras" class="list-group"></ul>
         </div>
-        <div class="text-center">
-            <button type="button" class="btn btn-danger" onclick="eliminarAreaMejora()">Eliminar Área de Mejora</button>
+        <div class="text-center mt-3">
+            <button type="button" class="btn btn-danger" onclick="eliminarPalabra()"><i class="fas fa-trash"></i> Eliminar Palabra</button>
         </div>
     </form>
     <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
@@ -99,7 +101,41 @@
 <!-- Font Awesome JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script>
-    
+    function buscarPalabra() {
+        const buscarPalabra = document.getElementById('buscar-palabra').value;
+
+        // Lógica para buscar la palabra en el sistema
+        // Simulación de resultado de búsqueda
+        const palabrasEncontradas = ["palabra1", "palabra2"]; // Aquí deberías implementar la lógica real de búsqueda
+
+        const listaPalabras = document.getElementById('lista-palabras');
+        listaPalabras.innerHTML = ''; // Limpiar la lista antes de mostrar los resultados
+
+        palabrasEncontradas.forEach(palabra => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item d-flex justify-content-between align-items-center';
+            li.textContent = palabra;
+
+            const btnEliminar = document.createElement('button');
+            btnEliminar.className = 'btn btn-danger btn-sm';
+            btnEliminar.innerHTML = '<i class="fas fa-trash"></i> Eliminar';
+            btnEliminar.onclick = () => eliminarPalabra(palabra);
+
+            li.appendChild(btnEliminar);
+            listaPalabras.appendChild(li);
+        });
+
+        document.getElementById('resultado-busqueda').style.display = 'block'; // Mostrar los resultados de búsqueda
+    }
+
+    function eliminarPalabra(palabra) {
+        // Lógica para eliminar la palabra del sistema
+        alert(`Palabra ofensiva "${palabra}" eliminada con éxito.`);
+
+        // Aquí deberías implementar la lógica para eliminar la palabra del sistema real
+        // Luego de eliminar, puedes volver a buscar para actualizar la lista de resultados
+        buscarPalabra();
+    }
 </script>
 </body>
 </html>
