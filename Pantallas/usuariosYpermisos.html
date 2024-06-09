@@ -81,7 +81,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         .btn-grey:hover {
             background-color: #666666;
         }
@@ -96,12 +95,19 @@
     <h1>Administrar Usuarios y Permisos</h1>
     <form id="permiso-form">
         <div class="form-group">
-            <label for="id-usuario">ID Usuario:</label>
+            <label for="nombre-usuario">Nombre de Usuario:</label>
             <div class="input-group">
-                <input type="text" id="id-usuario" name="id-usuario" class="form-control" required>
+                <input type="text" id="nombre-usuario" name="nombre-usuario" class="form-control" required>
                 <div class="input-group-append">
                     <button type="button" class="btn btn-primary" onclick="buscarUsuario()">Buscar</button>
                 </div>
+            </div>
+        </div>
+        <div id="acciones-container" style="display:none;">
+            <div class="text-center">
+                <button type="button" class="btn btn-secondary" onclick="mostrarPermisos()">Asignar Roles y Permisos</button>
+                <button type="button" class="btn btn-primary" onclick="modificarUsuario()">Modificar Usuario</button>
+                <button type="button" class="btn btn-danger" onclick="eliminarUsuario()">Eliminar Usuario</button>
             </div>
         </div>
         <div id="permisos-container" style="display:none;">
@@ -143,7 +149,6 @@
     <button type="button" class="btn-grey" onclick="window.location.href='home.html'">Atrás</button>
 </div>
 
-
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -152,37 +157,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script>
     function buscarUsuario() {
-        const idUsuario = document.getElementById('id-usuario').value;
+        const nombreUsuario = document.getElementById('nombre-usuario').value;
 
-        // Lógica para buscar al usuario en el sistema y obtener sus permisos actuales
+        // Lógica para buscar al usuario en el sistema y obtener sus datos
         // Esta es una función de ejemplo, debes reemplazarla con la lógica real
-        if (idUsuario) {
+        if (nombreUsuario) {
             // Simulación de búsqueda de usuario
             const usuarioExiste = true; // Aquí deberías verificar si el usuario realmente existe
             if (usuarioExiste) {
-                // Simulación de permisos actuales
-                const permisos = {
-                    lectura: true,
-                    escritura: false,
-                    eliminacion: true
-                };
-
-                document.getElementById('permiso-lectura').checked = permisos.lectura;
-                document.getElementById('permiso-escritura').checked = permisos.escritura;
-                document.getElementById('permiso-eliminacion').checked = permisos.eliminacion;
-
-                document.getElementById('permisos-container').style.display = 'block';
+                // Simulación de datos de usuario
+                document.getElementById('acciones-container').style.display = 'block';
             } else {
-                alert('El ID de usuario no existe. Por favor, introduzca un ID de usuario existente.');
+                alert('El nombre de usuario no existe. Por favor, introduzca un nombre de usuario existente.');
+                document.getElementById('acciones-container').style.display = 'none';
                 document.getElementById('permisos-container').style.display = 'none';
             }
         } else {
-            alert('Por favor, ingrese un ID de usuario válido.');
+            alert('Por favor, ingrese un nombre de usuario válido.');
         }
     }
 
+    function mostrarPermisos() {
+        // Aquí puedes cargar los permisos actuales del usuario si es necesario
+        document.getElementById('permisos-container').style.display = 'block';
+    }
+
     function guardarPermisos() {
-        const idUsuario = document.getElementById('id-usuario').value;
+        const nombreUsuario = document.getElementById('nombre-usuario').value;
         const permisos = {
             lectura: document.getElementById('permiso-lectura').checked,
             escritura: document.getElementById('permiso-escritura').checked,
@@ -190,11 +191,26 @@
         };
 
         // Aquí debes agregar la lógica para guardar los permisos del usuario en el sistema
-        alert(`Permisos del usuario con ID ${idUsuario} actualizados con éxito.`);
+        alert(`Permisos del usuario ${nombreUsuario} actualizados con éxito.`);
 
         // Limpiar los campos del formulario
         document.getElementById('permiso-form').reset();
         document.getElementById('permisos-container').style.display = 'none';
+        document.getElementById('acciones-container').style.display = 'none';
+    }
+
+    function modificarUsuario() {
+        const nombreUsuario = document.getElementById('nombre-usuario').value;
+
+        // Aquí debes agregar la lógica para modificar los datos del usuario
+        alert(`Usuario ${nombreUsuario} modificado con éxito.`);
+    }
+
+    function eliminarUsuario() {
+        const nombreUsuario = document.getElementById('nombre-usuario').value;
+
+        // Aquí debes agregar la lógica para eliminar el usuario del sistema
+        alert(`Usuario ${nombreUsuario} eliminado con éxito.`);
     }
 
     function crearUsuario() {
