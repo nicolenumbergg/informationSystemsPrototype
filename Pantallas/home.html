@@ -16,7 +16,9 @@
             background-color: #111;
             overflow: hidden;
             display: flex;
+            justify-content: space-around;
             align-items: center;
+            padding: 10px 0;
         }
         .navbar a, .navbar select {
             color: white;
@@ -44,9 +46,10 @@
         }
         .content {
             padding: 20px;
-            margin-top: 60px; /* Adjust this if your navbar height changes */
+            text-align: center;
+            margin-top: 60px;
         }
-        .content h2, .content h3 {
+        .content h1, .content h2, .content h3 {
             color: #03a9f4;
         }
         .welcome {
@@ -59,14 +62,76 @@
             background-size: cover;
             background-position: center;
         }
-        .login-banner{
-            height: 1000px;
-            align-items: center;
+        .tabs {
+            display: flex;
             justify-content: center;
-            background-image: url("/images/callCenterBackground.png");
+            margin-top: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 20px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #1c1c1c;
+            margin: 0 5px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .welcome {
+            text-align: center;
+            padding: 20px;
+            color: #03a9f4;
+            margin-bottom: 20px;
+            background-image: url('images/callCenterBackground.png'); /* Cambiar la ruta a la imagen correcta */
             background-size: cover;
             background-position: center;
-
+        }
+        .tab:hover {
+            background-color: #575757;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .active-tab-content {
+            display: block;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: #2e2e2e;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .card-title {
+            color: #03a9f4;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .card a {
+            color: #03a9f4;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .card a:hover {
+            text-decoration: underline;
         }
     </style>
     <script>
@@ -76,41 +141,168 @@
                 window.location.href = selectedPage;
             }
         }
+
+        function openTab(tabName) {
+            var i;
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            var tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active-tab");
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
     </script>
 </head>
 <body>
 <!-- Navbar -->
 <div class="navbar">
     <a href="login.html">Login</a>
-    <select onchange="navigateToPage(this)">
-        <option value="">Seleccione una opción</option>
-        <option value="gestionClientes.html">Gestión de Clientes</option>
-        <option value="gestionarEmpresaa.html">Gestión de Empresas</option>
-        <option value="cargarGrabaciones.html">Cargar Grabaciones</option>
-        <option value="protocoloContestacion.html">Protocolos de Contestación</option>
-        <option value="registrarLlamada.html">Registrar Llamada</option>
-        <option value="transcripcion.html">Cargar Transcripción</option>
-        <option value="usuariosYpermisos.html">Gestión de Usuarios y Permisos</option>
-        <option value="evaluacionLlamadas.html">Evaluación de Llamadas</option>
-        <option value="ponderacion.html">Ponderación de Llamada</option>
-        <option value="areaMejora.html">Gestión de Área de Mejora</option>
-        <option value="gestionarCuestionario.html">Gestión de Cuestionario</option>
-        <option value="gestionarCargo.html">Gestionar cargos</option>
-        <option value="informeSemanal.html">Informe Semanal</option>
-        <option value="actualizarMotivoLlamada.html">Actualizar Motivo</option>
-        <option value="actualizarEtiquetaLlamada.html">Actualizar Etiqueta</option>
-        <option value="eliminarEtiquetaLlamada.html">Eliminar Etiqueta</option>
-        <option value="servicio.html">Servicio</option>
-        <option value="palabraOfensiva.html">Palabras Ofensivas</option>
-        <option value="eliminarPalabra.html">Eliminar palabra</option>
-        <option value="soluciones.html">Soluciones</option>
-    </select>
 </div>
-<div>
-    <h1>Bienvenido al Sistema de Callcenter Interacción Cliente-IA</h1>
+<!-- Main Content -->
+<div class="content">
+    <div class="welcome">
+        <h1>Bienvenido al Sistema de Callcenter Interacción Cliente-IA</h1>
+    </div>
+    <div class="tabs">
+        <div class="tab" onclick="openTab('atencion')">Atención de Llamadas</div>
+        <div class="tab" onclick="openTab('evaluacion')">Evaluación de Llamadas</div>
+        <div class="tab" onclick="openTab('rrhh')">RRHH</div>
+        <div class="tab" onclick="openTab('reportes')">Reportes</div>
+    </div>
+
+    <!-- Contenido de las pestañas -->
+    <div id="atencion" class="tab-content">
+        <h2>Atención de Llamadas</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="../images/clients.png" alt="Gestión de Clientes">
+                <div class="card-title">Gestión de Clientes</div>
+                <a href="gestionClientes.html">Ir a Gestión de Clientes</a>
+            </div>
+            <div class="card">
+                <img src="../images/company.png" alt="Gestión de Empresas">
+                <div class="card-title">Gestión de Empresas</div>
+                <a href="gestionarEmpresaa.html">Ir a Gestión de Empresas</a>
+            </div>
+            <div class="card">
+                <img src="../images/record.png" alt="Cargar Grabaciones">
+                <div class="card-title">Cargar Grabaciones</div>
+                <a href="cargarGrabaciones.html">Ir a Cargar Grabaciones</a>
+            </div>
+            <div class="card">
+                <img src="../images/protocol.png" alt="Protocolos de Contestación">
+                <div class="card-title">Protocolos de Contestación</div>
+                <a href="protocoloContestacion.html">Ir a Protocolos de Contestación</a>
+            </div>
+            <div class="card">
+                <img src="../images/call.png" alt="Registrar Llamada">
+                <div class="card-title">Registrar Llamada</div>
+                <a href="registrarLlamada.html">Ir a Registrar Llamada</a>
+            </div>
+            <div class="card">
+                <img src="../images/transcription.png" alt="Cargar Transcripción">
+                <div class="card-title">Cargar Transcripción</div>
+                <a href="transcripcion.html">Ir a Cargar Transcripción</a>
+            </div>
+            <div class="card">
+                <img src="../images/solution.png" alt="Soluciones">
+                <div class="card-title">Soluciones</div>
+                <a href="soluciones.html">Ir a Soluciones</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="evaluacion" class="tab-content">
+        <h2>Evaluación de Llamadas</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="../images/evaluation.png" alt="Evaluación de Llamadas">
+                <div class="card-title">Evaluación de Llamadas</div>
+                <a href="evaluacionLlamadas.html">Ir a Evaluación de Llamadas</a>
+            </div>
+            <div class="card">
+                <img src="../images/points.png" alt="Ponderación de Llamada">
+                <div class="card-title">Ponderación de Llamada</div>
+                <a href="ponderacion.html">Ir a Ponderación de Llamada</a>
+            </div>
+            <div class="card">
+                <img src="../images/area.png" alt="Gestión de Área de Mejora">
+                <div class="card-title">Gestión de Área de Mejora</div>
+                <a href="areaMejora.html">Ir a Gestión de Área de Mejora</a>
+            </div>
+            <div class="card">
+                <img src="../images/form.png" alt="Gestión de Cuestionario">
+                <div class="card-title">Gestión de Cuestionario</div>
+                <a href="gestionarCuestionario.html">Ir a Gestión de Cuestionario</a>
+            </div>
+            <div class="card">
+                <img src="../images/reason.png" alt="Actualizar Motivo">
+                <div class="card-title">Actualizar Motivo</div>
+                <a href="actualizarMotivoLlamada.html">Ir a Actualizar Motivo</a>
+            </div>
+            <div class="card">
+                <img src="../images/tag.png" alt="Actualizar Etiqueta">
+                <div class="card-title">Actualizar Etiqueta</div>
+                <a href="actualizarEtiquetaLlamada.html">Ir a Actualizar Etiqueta</a>
+            </div>
+            <div class="card">
+                <img src="../images/deleteTag.png" alt="Eliminar Etiqueta">
+                <div class="card-title">Eliminar Etiqueta</div>
+                <a href="eliminarEtiquetaLlamada.html">Ir a Eliminar Etiqueta</a>
+            </div>
+            <div class="card">
+                <img src="../images/service.png" alt="Servicio">
+                <div class="card-title">Servicio</div>
+                <a href="servicio.html">Ir a Servicio</a>
+            </div>
+            <div class="card">
+                <img src="../images/word.png" alt="Palabras Ofensivas">
+                <div class="card-title">Palabras Ofensivas</div>
+                <a href="palabraOfensiva.html">Ir a Palabras Ofensivas</a>
+            </div>
+            <div class="card">
+                <img src="../images/deleteWord.png" alt="Eliminar Palabra">
+                <div class="card-title">Eliminar Palabra</div>
+                <a href="eliminarPalabra.html">Ir a Eliminar Palabra</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="rrhh" class="tab-content">
+        <h2>RRHH</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="../images/user.png" alt="Gestión de Usuarios y Permisos">
+                <div class="card-title">Gestión de Usuarios y Permisos</div>
+                <a href="usuariosYpermisos.html">Ir a Gestión de Usuarios y Permisos</a>
+            </div>
+            <div class="card">
+                <img src="../images/charge.png" alt="Gestionar Cargos">
+                <div class="card-title">Gestionar Cargos</div>
+                <a href="gestionarCargo.html">Ir a Gestionar Cargos</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="reportes" class="tab-content">
+        <h2>Reportes</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="../images/report.png" alt="Informe Semanal">
+                <div class="card-title">Informe Semanal</div>
+                <a href="informeSemanal.html">Ir a Informe Semanal</a>
+            </div>
+        </div>
+    </div>
+
 </div>
-<div class="login-banner">
-</div>
+<script>
+    // Abrir la primera pestaña por defecto
+    document.getElementsByClassName('tab')[0].click();
+</script>
 
 </body>
 </html>

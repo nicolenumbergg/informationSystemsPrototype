@@ -11,7 +11,7 @@
     <style>
         body {
             background-color: #0d0d0d;
-            color: #e4e4e7;
+            color: #ffffff; /* Cambio a color blanco para texto general */
             font-family: Arial, sans-serif;
         }
         .navbar, .footer {
@@ -84,6 +84,16 @@
         .btn-grey:hover {
             background-color: #666666;
         }
+
+        .modal-title
+        {
+            color: black;
+        }
+
+        /* Estilo para texto negro en modales */
+        .modal-body li {
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -95,14 +105,23 @@
     <h1>Gestión de clientes</h1>
     <form>
         <div class="form-group">
-            <label for="id-cliente">Codigo Cliente:</label>
-            <input type="text" id="id-cliente" name="id-cliente" class="form-control" required>
+            <label for="nombre">Codigo cliente:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-light-blue" onclick="mostrarModalClientes()">
+                        <i class="fas fa-user"></i> Clientes
+                    </button>
+                </div>
+                <input type="text" id="codigooo" name="nombre" class="form-control" required>
+            </div>
         </div>
         <div class="form-group">
             <label for="nombre">Codigo de empresa asociada:</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    <button type="button" class="btn btn-light-blue" onclick="mostrarModalEmpresas()">
+                        <i class="fas fa-building"></i> Empresas
+                    </button>
                 </div>
                 <input type="text" id="nombre" name="nombre" class="form-control" required>
             </div>
@@ -121,8 +140,20 @@
         </div>
         <div class="form-group">
             <label for="ciudad">Ciudad:</label>
-            <input type="text" id="ciudad" name="ciudad" class="form-control" required>
+            <select id="ciudad" name="ciudad" class="form-control" required>
+                <option value="">Selecciona un departamento</option>
+                <option value="La Paz">La Paz</option>
+                <option value="Santa Cruz">Santa Cruz</option>
+                <option value="Cochabamba">Cochabamba</option>
+                <option value="Oruro">Oruro</option>
+                <option value="Potosí">Potosí</option>
+                <option value="Tarija">Tarija</option>
+                <option value="Sucre">Sucre</option>
+                <option value="Beni">Beni</option>
+                <option value="Pando">Pando</option>
+            </select>
         </div>
+
         <div class="form-group">
             <label for="correo">Correo Electrónico:</label>
             <input type="email" id="correo" name="correo" class="form-control" required>
@@ -146,14 +177,74 @@
     </div>
 </footer>
 
-<!-- Bootstrap JS and dependencies -->
+<!-- Modales -->
+<div class="modal fade" id="modalClientes" tabindex="-1" role="dialog" aria-labelledby="modalClientesLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalClientesLabel">Clientes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Clientes:</strong></p>
+                <ul>
+                    <li>Nicole Numberg - Código: C123</li>
+                    <li>Oscar Aguilar - Código: C184</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal fade" id="modalEmpresas" tabindex="-1" role="dialog" aria-labelledby="modalEmpresasLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEmpresasLabel">Empresas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Empresas:</strong></p>
+                <ul>
+                    <li>COTAS - Código: E123</li>
+                    <li>Tigo - Código: E5158</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Font Awesome JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+<script>
+    function mostrarModalClientes() {
+        $('#modalClientes').modal('show');
+    }
+
+    function mostrarModalEmpresas() {
+        $('#modalEmpresas').modal('show');
+    }
+
+    function guardarCliente() {
+        // Aquí puedes agregar la lógica para guardar el cliente
+        alert('Cliente guardado correctamente');
+    }
+</script>
 </body>
 </html>
-
 
